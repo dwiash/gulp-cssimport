@@ -54,7 +54,7 @@ module.exports = function cssImport(options) {
 		var promises = [];
 		var contents = vinyl.contents.toString();
 		while ((match = importRe.exec(contents)) !== null) {
-			var match2 = /@import\s+(?:url\()?(.+(?=['"\)]))(?:\))?.*/ig.exec(match[0]);
+			var match2 = /(?:(?:\/\*(?:.|\s(?!\/\*))*\*\/)(?:\s|.)+)*@import\s+(?:url\()?(.+(?=['"\)]))(?:\))?.*/ig.exec(match[0]);
 			var importPath = trim(match2[1], "'\"");
 			if (!isMatch(importPath, options)) {
 				continue;
